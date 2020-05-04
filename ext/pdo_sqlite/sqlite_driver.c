@@ -825,6 +825,8 @@ static int pdo_sqlite_handle_factory(pdo_dbh_t *dbh, zval *driver_options) /* {{
 		goto cleanup;
 	}
 
+	sqlite3_enable_load_extension(H->db, 1);
+	
 	if (PG(open_basedir) && *PG(open_basedir)) {
 		sqlite3_set_authorizer(H->db, authorizer, NULL);
 	}
